@@ -1,0 +1,48 @@
+.cv-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.name {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: #009688; /* teal accent */
+}
+
+.contact-info {
+  font-size: 1rem;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.contact-item strong {
+  font-weight: 600;
+  color: #222;
+}
+
+.contact-item a {
+  color: #00796b;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #004d40;
+  text-decoration: underline;
+}
+
+.separator {
+  color: #bbb;
+}
+
+.divider {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #009688, transparent);
+  margin: 30px 0;
+}

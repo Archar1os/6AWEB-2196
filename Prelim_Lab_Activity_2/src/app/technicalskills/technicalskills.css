@@ -1,0 +1,48 @@
+/* ===========================
+   Technical Skills Section
+=========================== */
+.technical-skills {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #009688;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #009688;
+  text-transform: uppercase;
+}
+
+.tech-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.tech-category {
+  background-color: #f5fdfc;
+  padding: 18px 22px;
+  border-radius: 10px;
+  border-left: 5px solid #009688;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tech-category:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 150, 136, 0.25);
+}
+
+.category-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #00796b;
+  margin-bottom: 10px;
+}
+
+.tech-items {
+  font-size: 1rem;
+  color: #555;
+}

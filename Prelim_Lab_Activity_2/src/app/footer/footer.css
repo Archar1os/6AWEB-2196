@@ -1,0 +1,48 @@
+/* ===========================
+   Footer Styles
+=========================== */
+.cv-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 25px 15px;
+  background: #f5fdfc;
+  border-top: 4px solid #009688; /* teal accent */
+  border-radius: 0 0 16px 16px;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #009688, transparent);
+  margin-bottom: 20px;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #00796b;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #004d40;
+  text-decoration: underline;
+}
+
+/* Responsive Footer */
+@media (max-width: 480px) {
+  .footer-text {
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    font-size: 0.85rem;
+  }
+}

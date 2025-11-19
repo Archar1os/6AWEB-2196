@@ -1,0 +1,25 @@
+/* ===========================
+   Profile Section Styles
+=========================== */
+.profile-section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #009688;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #009688;
+  text-transform: uppercase;
+}
+
+.profile-text {
+  font-size: 1.05rem;
+  color: #444;
+  text-align: justify;
+  line-height: 1.9;
+  margin-top: 15px;
+}

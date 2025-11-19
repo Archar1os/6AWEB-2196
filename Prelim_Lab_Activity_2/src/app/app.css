@@ -1,0 +1,91 @@
+/* ===========================
+   Global Styles
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #e9ecef;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c2c2c;
+  line-height: 1.7;
+}
+
+/* Gradient background with teal accent */
+.app-container {
+  background: linear-gradient(to bottom, #1b1b1b 10%, #2c3e50 60%, #009688);
+  padding: 80px 20px;
+  margin: 0;
+}
+
+/* ===========================
+   CV Container
+=========================== */
+.cv-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 50px 70px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-left: 8px solid #009688; /* teal accent */
+}
+
+/* ===========================
+   Content Styles
+=========================== */
+.cv-content {
+  margin-top: 40px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+/* ===========================
+   Profile Section Styles
+=========================== */
+.profile-section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #009688;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #009688;
+  text-transform: uppercase;
+}
+
+.profile-text {
+  font-size: 1.05rem;
+  color: #444;
+  text-align: justify;
+  line-height: 1.9;
+  margin-top: 15px;
+}
+
+/* Responsive adjustments for profile */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.3rem;
+  }
+  .profile-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.15rem;
+  }
+  .profile-text {
+    font-size: 0.95rem;
+  }
+}

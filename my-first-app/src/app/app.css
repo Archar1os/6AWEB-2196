@@ -1,0 +1,261 @@
+/* ===========================
+   Global Styles
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #e9ecef;
+  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c2c2c;
+  line-height: 1.7;
+}
+
+/* Gradient background with teal accent */
+.app-container {
+  background: linear-gradient(to bottom, #1b1b1b 10%, #2c3e50 60%, #009688);
+  padding: 80px 20px;
+  margin: 0;
+}
+
+/* ===========================
+   CV Container
+=========================== */
+.cv-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 50px 70px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-left: 8px solid #009688; /* teal accent */
+}
+
+/* ===========================
+   Header Styles
+=========================== */
+.cv-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.name {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: #009688; /* accent color */
+}
+
+.contact-info {
+  font-size: 1rem;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.contact-item strong {
+  font-weight: 600;
+  color: #222;
+}
+
+.contact-item a {
+  color: #00796b;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #004d40;
+  text-decoration: underline;
+}
+
+.separator {
+  color: #bbb;
+}
+
+.divider {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #009688, transparent);
+  margin: 30px 0;
+}
+
+/* ===========================
+   Content Styles
+=========================== */
+.cv-content {
+  margin-top: 40px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #009688;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #009688;
+  text-transform: uppercase;
+}
+
+/* Profile Section */
+.profile-text {
+  font-size: 1.05rem;
+  color: #444;
+  text-align: justify;
+  line-height: 1.9;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.skills-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skills-list li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 14px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.skills-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #009688; /* accent checkmark */
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Technical Skills Section */
+.tech-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.tech-category {
+  background-color: #f5fdfc;
+  padding: 18px 22px;
+  border-radius: 10px;
+  border-left: 5px solid #009688;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tech-category:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 150, 136, 0.25);
+}
+
+.category-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #00796b;
+  margin-bottom: 10px;
+}
+
+.tech-items {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* ===========================
+   Responsive Design
+=========================== */
+@media (max-width: 768px) {
+  .cv-container {
+    padding: 35px 25px;
+  }
+
+  .name {
+    font-size: 2.4rem;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cv-container {
+    padding: 25px 15px;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .contact-info {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+
+  .profile-text,
+  .skills-list li,
+  .tech-items {
+    font-size: 0.95rem;
+  }
+}
+
+/* ===========================
+   Print Styles
+=========================== */
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .cv-container {
+    padding: 25px;
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    border-left: none;
+  }
+
+  .name {
+    font-size: 2.5rem;
+    color: #000;
+  }
+
+  .section-title {
+    page-break-after: avoid;
+    color: #000;
+    border-bottom: 2px solid #000;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+}
