@@ -1,0 +1,58 @@
+/* Main container */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Navigation container */
+nav {
+  background: linear-gradient(90deg, #2c3e50, #34495e); /* Smooth gradient */
+  padding: 12px 30px;
+  display: flex;
+  justify-content: center;   /* Center the links */
+  align-items: center;
+  gap: 25px;                 /* More breathing room between links */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Subtle shadow */
+}
+
+/* Links */
+nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #1abc9c;
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: #1abc9c;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Active link */
+nav a.active {
+  color: #f39c12;
+  font-weight: 600;
+}
+
+nav a.active::after {
+  width: 100%;
+  background-color: #f39c12;
+}

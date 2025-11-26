@@ -1,0 +1,44 @@
+/* Home page heading */
+h1, p{
+  font-size: 2.5rem;                /* Larger text */
+  font-weight: 700;                 /* Bold */
+  text-align: center;               /* Centered */
+  margin-top: 40px;
+  color: #2c3e50;                   /* Dark blue-gray */
+  letter-spacing: 1px;              /* Slight spacing */
+  position: relative;
+  padding-bottom: 10px;
+}
+
+/* Decorative underline */
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  margin: auto;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, #1abc9c, #f39c12);
+  border-radius: 2px;
+}
+
+/* Subtle animation on load */
+h1, p{
+  animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
