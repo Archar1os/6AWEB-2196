@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angular-routing-lab": {
+    "Prelim_Lab_Activity_5": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -25,11 +25,7 @@
               }
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
-            ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -60,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-routing-lab:build:production"
+              "buildTarget": "Prelim_Lab_Activity_5:build:production"
             },
             "development": {
-              "buildTarget": "angular-routing-lab:build:development"
+              "buildTarget": "Prelim_Lab_Activity_5:build:development"
             }
           },
           "defaultConfiguration": "development"
