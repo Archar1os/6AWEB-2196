@@ -1,0 +1,68 @@
+<!-- app.component.html -->
+<nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <a routerLink="/" class="flex items-center space-x-2 group">
+        <div class="text-2xl font-bold text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
+          GlobalCon
+        </div>
+        <span class="hidden sm:inline text-sm text-gray-500 font-medium">Connecting Globally</span>
+      </a>
+
+      <!-- Desktop Navigation Only -->
+      <div class="flex items-center space-x-1">
+        <a routerLink="/"
+           routerLinkActive="text-blue-600 bg-blue-50"
+           [routerLinkActiveOptions]="{exact: true}"
+           class="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200 font-medium">
+          Home
+        </a>
+        <a routerLink="/partners"
+           routerLinkActive="text-blue-600 bg-blue-50"
+           class="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200 font-medium">
+          Partners
+        </a>
+        <a routerLink="/about"
+           routerLinkActive="text-blue-600 bg-blue-50"
+           class="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200 font-medium">
+          About
+        </a>
+        <a routerLink="/join-us"
+           routerLinkActive="text-blue-600 bg-blue-50"
+           class="ml-2 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold shadow-md hover:shadow-lg">
+          Join Us
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Page content -->
+    <router-outlet></router-outlet>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <div class="text-xl font-bold text-white">GlobalCon</div>
+        <p class="text-gray-400 text-sm mt-1">Connecting businesses worldwide</p>
+      </div>
+      <div class="flex space-x-6">
+        <a routerLink="/privacy" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+          Privacy Policy
+        </a>
+        <a routerLink="/terms" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+          Terms of Service
+        </a>
+        <a routerLink="/contact" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+          Contact
+        </a>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+      &copy; {{ currentYear }} GlobalCon. All rights reserved.
+    </div>
+  </div>
+</footer>
