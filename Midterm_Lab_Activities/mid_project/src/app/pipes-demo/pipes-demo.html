@@ -1,0 +1,68 @@
+<div class="p-6 bg-gray-50 min-h-screen">
+  <h1 class="text-2xl font-bold text-blue-600 text-center mb-6">Pipes Demo Works</h1>
+
+  <!-- Date Pipe Demo -->
+  <div class="bg-white shadow rounded-lg p-4 mb-6 max-w-md mx-auto">
+    <h2 class="text-lg font-semibold text-gray-700 mb-2 text-center">Date Pipe Demo</h2>
+    <p>This is a date: <span class="font-mono">{{presentDate | date:'shortDate'}}</span></p>
+    <p>Full date: <span class="font-mono">{{presentDate | date:'fullDate'}}</span></p>
+    <p>Formatted: <span class="font-mono">{{presentDate | date:'dd/MM/yyyy'}}</span></p>
+    <p>Hours & minutes: <span class="font-mono">{{presentDate | date:'hh:mm'}}</span></p>
+    <p class="text-sm text-gray-500 mt-2 text-center">Romero, Smith Dainielle L.</p>
+  </div>
+
+  <!-- Async Pipe Demo -->
+  <div class="bg-white shadow rounded-lg p-4 mb-6 max-w-md mx-auto">
+    <h2 class="text-lg font-semibold text-gray-700 mb-2 text-center">Async Pipe Demo</h2>
+    <p>Seconds changing in Time: <span class="font-mono">{{time$ | async | date:"mediumTime"}}</span></p>
+  </div>
+
+  <!-- Currency Pipe Demo -->
+  <div class="bg-white shadow rounded-lg p-4 mb-6 max-w-md mx-auto">
+    <h2 class="text-lg font-semibold text-gray-700 mb-2 text-center">Currency Pipe Demo</h2>
+    <ul class="list-disc list-inside text-gray-600">
+      <li>Default: {{price | currency}}</li>
+      <li>Euros: {{price | currency:'EUR'}}</li>
+      <li>Pounds: {{price | currency:'GBP'}}</li>
+      <li>Yen: {{price | currency:'JPY'}}</li>
+    </ul>
+  </div>
+
+  <!-- Slice Pipe Demo -->
+  <div class="bg-white shadow rounded-lg p-4 mb-6 max-w-md mx-auto">
+    <h2 class="text-lg font-semibold text-gray-700 mb-2 text-center">Slice Pipe Demo</h2>
+    <ul class="list-disc list-inside text-gray-600">
+      <li>Start index: {{Fruits | slice:2}}</li>
+      <li>Start and End index: {{Fruits | slice:1:4}}</li>
+      <li>Negative index: {{Fruits | slice:-2}}</li>
+      <li>Negative Start and End index: {{Fruits | slice:-4:-2}}</li>
+    </ul>
+  </div>
+
+  <!-- Decimal Pipe Demo -->
+  <div class="bg-white shadow rounded-lg p-4 mb-6 max-w-md mx-auto">
+    <h2 class="text-lg font-semibold text-gray-700 mb-2 text-center">Decimal Pipe Demo</h2>
+    <p>Formatted (3.1): {{decimalNum1 | number:'3.1'}}</p>
+    <p>Formatted (2.1-4): {{decimalNum2 | number:'2.1-4'}}</p>
+  </div>
+
+  <!-- Percentage Pipe Demo -->
+  <div class="bg-white shadow rounded-lg p-4 mb-6 max-w-md mx-auto">
+    <h2 class="text-lg font-semibold text-gray-700 mb-2 text-center">Percentage Pipe Demo</h2>
+    <p>Percent: {{percentage | percent}}</p>
+    <p>Percent (Custom): {{percentage | percent:'2.1-2'}}</p>
+  </div>
+
+  <!-- Upper/Lower Case Pipe Demo -->
+  <div class="bg-white shadow rounded-lg p-4 mb-6 max-w-md mx-auto">
+    <h2 class="text-lg font-semibold text-gray-700 mb-2 text-center">Upper/Lower Case Pipe Demo</h2>
+    <p>Uppercase: {{message | uppercase}}</p>
+    <p>Lowercase: {{message | lowercase}}</p>
+  </div>
+
+  <!-- Json Pipe Demo -->
+  <div class="bg-white shadow rounded-lg p-4 max-w-md mx-auto">
+    <h2 class="text-lg font-semibold text-gray-700 mb-2 text-center">Json Pipe Demo</h2>
+    <pre class="bg-gray-100 p-2 rounded text-sm overflow-x-auto">{{student | json}}</pre>
+  </div>
+</div>
