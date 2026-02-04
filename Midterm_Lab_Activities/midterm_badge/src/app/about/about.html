@@ -1,0 +1,28 @@
+<div class="about bg-white shadow rounded-lg p-6 animate-fadeIn">
+  <!-- Heading with uppercase pipe -->
+  <h1 class="text-2xl font-bold text-gray-700 mb-4 transition-transform hover:scale-105">
+    {{ 'About Our Portal' | uppercase }}
+  </h1>
+
+  <!-- Portal description -->
+  <p class="text-gray-600 mb-4 animate-slideUp">
+    The <span class="font-semibold">Community Help Desk Portal</span> is a small multi‑page
+    Angular application built as part of the Midterm Badge project. It demonstrates
+    routing, shared services, observables, and pipes while fetching live JSON data
+    from a remote API.
+  </p>
+
+  <!-- Requirements summary -->
+  <ul class="list-disc list-inside text-gray-600 space-y-2 animate-slideUp delay-100">
+    <li>✔ Angular Router for navigation across Home, About, Services, and Contact pages</li>
+    <li>✔ Shared service fetching JSONPlaceholder posts and exposing them as Observables</li>
+    <li>✔ Built‑in pipes (uppercase, date, slice) and a custom truncate pipe</li>
+    <li>✔ Navigation UI with active route highlighting</li>
+  </ul>
+
+  <!-- Current date/time -->
+  <p class="text-gray-500 italic mt-6 animate-slideUp delay-200">
+    Today's Date: {{ today | date:'fullDate' }} <br />
+    Current Time: {{ today | date:'shortTime' }}
+  </p>
+</div>

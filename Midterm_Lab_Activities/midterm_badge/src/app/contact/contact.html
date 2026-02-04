@@ -1,0 +1,82 @@
+<div class="contact bg-white shadow rounded-lg p-6 animate-fadeIn">
+  <h1 class="text-2xl font-bold text-gray-700 mb-6">
+    Contact Us
+  </h1>
+
+  <!-- Success Notification -->
+  <div *ngIf="submitted"
+       class="mb-4 p-3 rounded bg-green-100 text-green-700 border border-green-300 animate-slideDown">
+    ✅ Your message has been sent successfully!
+  </div>
+
+  <form #contactForm="ngForm" class="space-y-4" (ngSubmit)="onSubmit(contactForm)">
+    <!-- Name -->
+    <div class="animate-slideUp">
+      <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+      <input
+        id="name"
+        type="text"
+        name="name"
+        [(ngModel)]="name"
+        required
+        #nameCtrl="ngModel"
+        class="mt-1 block w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-300 focus:shadow-lg"
+      />
+      <div *ngIf="nameCtrl.invalid && nameCtrl.touched" class="text-red-600 text-sm mt-1 animate-bounce">
+        Name is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="animate-slideUp delay-100">
+      <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        email
+        #emailCtrl="ngModel"
+        class="mt-1 block w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-300 focus:shadow-lg"
+      />
+      <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="text-red-600 text-sm mt-1 animate-bounce">
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div class="animate-slideUp delay-200">
+      <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        [(ngModel)]="message"
+        required
+        #messageCtrl="ngModel"
+        rows="4"
+        class="mt-1 block w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-300 focus:shadow-lg"
+      ></textarea>
+      <div *ngIf="messageCtrl.invalid && messageCtrl.touched" class="text-red-600 text-sm mt-1 animate-bounce">
+        Message is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      [disabled]="contactForm.invalid"
+      class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Submit
+    </button>
+  </form>
+
+  <!-- Preview -->
+  <div class="mt-8 animate-fadeIn delay-300">
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">Form Preview</h2>
+    <p><strong>Name:</strong> {{ name | uppercase }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Message:</strong> {{ message }}</p>
+  </div>
+</div>
