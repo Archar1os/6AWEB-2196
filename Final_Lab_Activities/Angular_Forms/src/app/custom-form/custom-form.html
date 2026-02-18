@@ -1,0 +1,88 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center p-8">
+  <form [formGroup]="customForm" (ngSubmit)="onSubmit()" class="max-w-xl w-full bg-white p-8 shadow-lg rounded-xl space-y-6">
+    <h2 class="text-2xl font-bold text-gray-800 text-center">Student Permit Application Form</h2>
+    <p class="text-gray-600 text-center">Fill out the required details to apply for a student permit.</p>
+
+    <!-- Full Name -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Full Name</label>
+      <input formControlName="fullName" placeholder="Enter full name"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"/>
+      <div *ngIf="isInvalid('fullName')" class="text-red-500 text-sm mt-1">Name is required (min 3 chars).</div>
+    </div>
+
+    <!-- Birth Date -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Birth Date</label>
+      <input type="date" formControlName="birthDate"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"/>
+      <div *ngIf="isInvalid('birthDate')" class="text-red-500 text-sm mt-1">Birth date required.</div>
+    </div>
+
+    <!-- Address -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Address</label>
+      <textarea formControlName="address" rows="2" placeholder="Enter address"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"></textarea>
+      <div *ngIf="isInvalid('address')" class="text-red-500 text-sm mt-1">Address required (min 10 chars).</div>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Email</label>
+      <input type="email" formControlName="email" placeholder="Enter email"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"/>
+      <div *ngIf="isInvalid('email')" class="text-red-500 text-sm mt-1">Valid email required.</div>
+    </div>
+
+    <!-- Contact Number -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Contact Number</label>
+      <input formControlName="contactNumber" placeholder="09XXXXXXXXX"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"/>
+      <div *ngIf="isInvalid('contactNumber')" class="text-red-500 text-sm mt-1">Enter a valid 10–11 digit number.</div>
+    </div>
+
+    <!-- School Name -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">School Name</label>
+      <input formControlName="schoolName" placeholder="Enter school name"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"/>
+      <div *ngIf="isInvalid('schoolName')" class="text-red-500 text-sm mt-1">School name required.</div>
+    </div>
+
+    <!-- Guardian Name -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Guardian Name</label>
+      <input formControlName="guardianName" placeholder="Enter guardian name"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"/>
+      <div *ngIf="isInvalid('guardianName')" class="text-red-500 text-sm mt-1">Guardian name required.</div>
+    </div>
+
+    <!-- Guardian Contact -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Guardian Contact</label>
+      <input formControlName="guardianContact" placeholder="09XXXXXXXXX"
+        class="mt-1 w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500"/>
+      <div *ngIf="isInvalid('guardianContact')" class="text-red-500 text-sm mt-1">Enter a valid 10–11 digit number.</div>
+    </div>
+
+    <!-- Agreement -->
+    <div class="flex items-center space-x-2">
+      <input type="checkbox" formControlName="agree" class="h-4 w-4 text-indigo-600"/>
+      <label class="text-sm text-gray-700">I confirm that the information provided is true and correct.</label>
+    </div>
+    <div *ngIf="isInvalid('agree')" class="text-red-500 text-sm mt-1">You must agree before submitting.</div>
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="customForm.invalid"
+      class="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+      Submit Application
+    </button>
+
+    <!-- Success -->
+    <div *ngIf="submitted" class="mt-6 p-4 bg-green-100 text-green-700 rounded-lg text-center font-medium">
+      🎉 Student Permit application submitted successfully!
+    </div>
+  </form>
+</div>

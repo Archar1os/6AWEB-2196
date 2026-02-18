@@ -1,0 +1,40 @@
+<nav class="bg-gradient-to-r from-red-700 to-red-900 text-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <!-- Logo / Title -->
+      <div class="flex-shrink-0 text-lg lg:text-xl font-bold tracking-wide">
+        Forms Demo App
+        <span class="text-sm font-normal text-red-200 block lg:inline">
+          (Romero, Smith Dainielle L. | WD-302)
+        </span>
+      </div>
+
+      <!-- Links -->
+      <div class="flex space-x-8">
+        <a
+          routerLink="/template-demo"
+          routerLinkActive="text-yellow-300 border-b-2 border-yellow-300"
+          class="hover:text-yellow-200 transition font-medium"
+        >
+          Template Demo
+        </a>
+        <a
+          routerLink="/reactive-demo"
+          routerLinkActive="text-yellow-300 border-b-2 border-yellow-300"
+          class="hover:text-yellow-200 transition font-medium"
+        >
+          Reactive Demo
+        </a>
+        <a
+          routerLink="/custom-form"
+          routerLinkActive="text-yellow-300 border-b-2 border-yellow-300"
+          class="hover:text-yellow-200 transition font-medium"
+        >
+          Custom Form
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <router-outlet/>

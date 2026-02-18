@@ -1,0 +1,97 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center p-8">
+  <form
+    (ngSubmit)="OnSubmit(myForm)"
+    #myForm="ngForm"
+    class="max-w-lg mx-auto bg-white p-8 shadow-xl rounded-xl space-y-6"
+  >
+    <h2 class="text-2xl font-bold text-gray-800 text-center">Demo Registration Form</h2>
+    <p class="text-gray-600 text-center">Fill out the fields below and submit to see the demo in action.</p>
+
+    <!-- Username -->
+    <div>
+      <label for="username" class="block text-sm font-semibold text-gray-700">Username</label>
+      <input
+        id="username"
+        type="text"
+        name="username"
+        [(ngModel)]="username"
+        required
+        #usernameCtrl="ngModel"
+        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+      />
+      <div *ngIf="usernameCtrl.invalid && usernameCtrl.touched" class="text-red-500 text-sm mt-1">
+        Username is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="email" class="block text-sm font-semibold text-gray-700">Email</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        #emailCtrl="ngModel"
+        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+      />
+      <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="text-red-500 text-sm mt-1">
+        Please enter a valid email.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div>
+      <label for="password" class="block text-sm font-semibold text-gray-700">Password</label>
+      <input
+        id="password"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        minlength="6"
+        #passwordCtrl="ngModel"
+        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+      />
+      <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="text-red-500 text-sm mt-1">
+        Password must be at least 6 characters.
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div>
+      <label for="role" class="block text-sm font-semibold text-gray-700">Role</label>
+      <select
+        id="role"
+        name="role"
+        [(ngModel)]="role"
+        required
+        #roleCtrl="ngModel"
+        class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+      >
+        <option value="" disabled>Select your role</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+        <option value="guest">Guest</option>
+      </select>
+      <div *ngIf="roleCtrl.invalid && roleCtrl.touched" class="text-red-500 text-sm mt-1">
+        Please select a role.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      [disabled]="myForm.invalid"
+      class="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Submit
+    </button>
+
+    <!-- Success Message -->
+    <div *ngIf="submitted" class="mt-6 p-4 bg-green-100 text-green-700 rounded-lg text-center font-medium">
+      🎉 Demo form submitted successfully!
+    </div>
+  </form>
+</div>
