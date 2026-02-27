@@ -1,0 +1,328 @@
+/* ===== RESET STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.form-container {
+  max-width: 580px;
+  width: 100%;
+  background: white;
+  border-radius: 32px;
+  padding: 40px 42px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== HEADER ===== */
+h2 {
+  color: #1a1f36;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+  letter-spacing: -0.5px;
+  text-align: center;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  margin: 12px auto 0;
+  border-radius: 4px;
+}
+
+/* ===== FORM ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== FORM FIELDS - FIXED OVERLAP ===== */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 0 !important;
+  display: block;
+}
+
+/* Material Form Field Overrides - Clean and Spacious */
+::ng-deep .mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: #e2e8f0;
+  --mdc-outlined-text-field-focus-outline-color: #667eea;
+  --mdc-outlined-text-field-hover-outline-color: #cbd5e0;
+  --mdc-outlined-text-field-label-text-color: #64748b;
+  --mdc-outlined-text-field-focus-label-text-color: #667eea;
+  --mdc-outlined-text-field-input-text-color: #1a1f36;
+  width: 100%;
+  margin-bottom: 0 !important;
+}
+
+::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+  background: #f8fafc !important;
+  border-radius: 16px !important;
+  height: 64px !important;
+}
+
+::ng-deep .mat-mdc-form-field .mat-mdc-form-field-flex {
+  height: 64px !important;
+  align-items: center !important;
+}
+
+::ng-deep .mat-mdc-form-field .mat-mdc-floating-label {
+  top: 22px !important;
+  font-size: 15px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+  color: #667eea !important;
+}
+
+::ng-deep .mat-mdc-form-field .mat-mdc-input-element {
+  caret-color: #667eea !important;
+  color: #1a1f36 !important;
+  font-size: 15px !important;
+  padding: 8px 0 !important;
+  margin-top: 8px !important;
+}
+
+::ng-deep .mat-mdc-form-field .mat-mdc-form-field-infix {
+  padding-top: 24px !important;
+  padding-bottom: 8px !important;
+}
+
+/* ===== ERROR MESSAGES - FIXED OVERLAP ===== */
+mat-error {
+  font-size: 13px;
+  color: #e53e3e !important;
+  margin-top: 6px !important;
+  margin-bottom: 0 !important;
+  padding: 4px 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.4;
+  height: auto;
+  min-height: 24px;
+}
+
+mat-error::before {
+  content: '⚠️';
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+/* ===== LABELS (Gender, Skill Level) ===== */
+form > label {
+  color: #2d3748;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 8px 0 4px 0;
+  display: block;
+  letter-spacing: 0.3px;
+  padding-left: 4px;
+}
+
+/* ===== RADIO GROUP - FIXED SPACING ===== */
+mat-radio-group {
+  display: flex;
+  gap: 32px;
+  padding: 16px 0 8px 0;
+  margin-bottom: 12px;
+}
+
+::ng-deep .mat-mdc-radio-button {
+  --mdc-radio-selected-focus-icon-color: #667eea;
+  --mdc-radio-selected-hover-icon-color: #667eea;
+  --mdc-radio-selected-icon-color: #667eea;
+  --mdc-radio-selected-pressed-icon-color: #667eea;
+  --mdc-radio-unselected-icon-color: #cbd5e0;
+  --mdc-radio-unselected-hover-icon-color: #94a3b8;
+}
+
+::ng-deep .mat-mdc-radio-button .mdc-form-field {
+  color: #2d3748 !important;
+  font-size: 15px !important;
+}
+
+/* ===== SLIDER - FIXED SPACING ===== */
+mat-slider {
+  width: 100%;
+  margin: 12px 0 24px !important;
+  display: block;
+}
+
+::ng-deep .mat-mdc-slider {
+  --mdc-slider-handle-color: #667eea;
+  --mdc-slider-focus-handle-color: #667eea;
+  --mdc-slider-hover-handle-color: #5a67d8;
+  --mdc-slider-active-track-color: #667eea;
+  --mdc-slider-inactive-track-color: #e2e8f0;
+}
+
+::ng-deep .mat-mdc-slider .mdc-slider__track--active {
+  height: 6px !important;
+}
+
+::ng-deep .mat-mdc-slider .mdc-slider__track--inactive {
+  height: 6px !important;
+}
+
+::ng-deep .mat-mdc-slider .mdc-slider__thumb-knob {
+  width: 20px !important;
+  height: 20px !important;
+  border-width: 10px !important;
+}
+
+/* ===== BUTTON - FIXED POSITION ===== */
+button[type='submit'] {
+  width: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 16px !important;
+  padding: 16px 24px !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  margin: 28px 0 8px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.3) !important;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  line-height: 1.2;
+}
+
+button[type='submit']:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 20px -3px rgba(102, 126, 234, 0.4) !important;
+}
+
+button[type='submit']:active {
+  transform: translateY(0);
+}
+
+/* ===== SUBMITTED INFO SECTION - FIXED SPACING ===== */
+.form-container > div:last-child {
+  margin-top: 40px;
+  padding: 28px 24px;
+  background: #f8fafc;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  clear: both;
+  overflow: hidden;
+}
+
+h3 {
+  color: #1a1f36;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+p {
+  color: #2d3748;
+  font-size: 15px;
+  margin: 10px 0;
+  padding: 10px 14px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+  border: 1px solid #edf2f7;
+}
+
+p strong {
+  color: #667eea;
+  min-width: 120px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ===== DATE PICKER - FIXED OVERLAP ===== */
+::ng-deep .mat-datepicker-toggle {
+  color: #667eea !important;
+  position: relative !important;
+  top: -2px !important;
+}
+
+::ng-deep .mat-datepicker-content {
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #667eea !important;
+}
+
+/* ===== FIX FOR FORM FIELD SPACING ===== */
+::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  height: 24px !important;
+  position: relative !important;
+  top: 4px !important;
+}
+
+::ng-deep .mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+}
+
+/* ===== ENSURE NO OVERLAPS ===== */
+form > * {
+  position: relative;
+  z-index: 1;
+}
+
+mat-form-field + mat-form-field {
+  margin-top: 0;
+}
+
+/* ===== ADD SOME BREATHING ROOM ===== */
+br {
+  display: none;
+}
+
+/* ===== CLEAN AND MODERN SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
