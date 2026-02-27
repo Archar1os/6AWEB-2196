@@ -1,0 +1,516 @@
+<div class="form-container" [class.dark-mode]="isDarkMode">
+  <!-- Theme Toggle -->
+  <div class="theme-toggle-container">
+    <mat-slide-toggle
+      [checked]="isDarkMode"
+      (change)="toggleTheme()"
+      color="primary"
+      class="theme-toggle"
+    >
+      <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+      <span>{{ isDarkMode ? 'Dark Mode' : 'Light Mode' }}</span>
+    </mat-slide-toggle>
+  </div>
+
+  <mat-card class="permit-card">
+    <mat-card-header>
+      <div class="header-icon">
+        <mat-icon>assignment_ind</mat-icon>
+      </div>
+      <mat-card-title>LTO Student Permit Application</mat-card-title>
+      <mat-card-subtitle>Land Transportation Office - Student Driver's Permit</mat-card-subtitle>
+      <div class="fee-badge">
+        <mat-chip-set>
+          <mat-chip highlighted color="primary">Application Fee: ₱317.63</mat-chip>
+          <mat-chip color="accent">Valid for 1 Year</mat-chip>
+        </mat-chip-set>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+        <!-- SECTION 1: PERSONAL INFORMATION -->
+        <mat-accordion class="section-accordion" multi>
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>person</mat-icon>
+                Personal Information
+              </mat-panel-title>
+              <mat-panel-description> Your basic details </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <!-- Full Name -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Full Name (as in birth certificate)</mat-label>
+              <mat-icon matPrefix>badge</mat-icon>
+              <input matInput formControlName="fullName" placeholder="Juan M. Dela Cruz" />
+              <mat-error *ngIf="formdata.get('fullName')?.hasError('required')">
+                Full name is required
+              </mat-error>
+              <mat-error *ngIf="formdata.get('fullName')?.hasError('minlength')">
+                Must be at least 5 characters
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Email and Password Row -->
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Email Address</mat-label>
+                <mat-icon matPrefix>email</mat-icon>
+                <input
+                  matInput
+                  formControlName="email"
+                  type="email"
+                  placeholder="student@school.edu.ph"
+                />
+                <mat-error *ngIf="formdata.get('email')?.hasError('required')">
+                  Email required
+                </mat-error>
+                <mat-error *ngIf="formdata.get('email')?.hasError('email')">
+                  Invalid email
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Password</mat-label>
+                <mat-icon matPrefix>lock</mat-icon>
+                <input
+                  matInput
+                  type="password"
+                  formControlName="password"
+                  placeholder="Create password"
+                />
+                <mat-error *ngIf="formdata.get('password')?.hasError('required')">
+                  Password required
+                </mat-error>
+                <mat-error *ngIf="formdata.get('password')?.hasError('pattern')">
+                  Must start with a letter
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- Password Strength Meter -->
+            <div class="password-strength" *ngIf="formdata.get('password')?.value">
+              <div class="strength-label">
+                <span>Password Strength:</span>
+                <span
+                  [class.weak]="passwordStrength < 50"
+                  [class.moderate]="passwordStrength >= 50 && passwordStrength < 75"
+                  [class.strong]="passwordStrength >= 75"
+                >
+                  {{ passwordFeedback }}
+                </span>
+              </div>
+              <mat-progress-bar
+                mode="determinate"
+                [value]="passwordStrength"
+                [color]="
+                  passwordStrength < 50 ? 'warn' : passwordStrength < 75 ? 'accent' : 'primary'
+                "
+              >
+              </mat-progress-bar>
+            </div>
+
+            <!-- Gender and Birth Date Row -->
+            <div class="form-row">
+              <div class="half-width">
+                <label class="section-label">Gender</label>
+                <mat-radio-group formControlName="gender" class="gender-group">
+                  <mat-radio-button value="Male">Male</mat-radio-button>
+                  <mat-radio-button value="Female">Female</mat-radio-button>
+                  <mat-radio-button value="Other">Other</mat-radio-button>
+                </mat-radio-group>
+                <mat-error *ngIf="formdata.get('gender')?.hasError('required')">
+                  Select gender
+                </mat-error>
+              </div>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Birth Date</mat-label>
+                <mat-icon matPrefix>cake</mat-icon>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="birthDate"
+                  placeholder="MM/DD/YYYY"
+                />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="formdata.get('birthDate')?.hasError('required')">
+                  Birth date required
+                </mat-error>
+                <mat-error *ngIf="formdata.get('birthDate')?.hasError('invalidYear')">
+                  Must be 18+ (born 2006 or below)
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- Birth Place and Citizenship -->
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Place of Birth</mat-label>
+                <mat-icon matPrefix>place</mat-icon>
+                <input matInput formControlName="birthPlace" placeholder="Manila, Philippines" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Citizenship</mat-label>
+                <mat-icon matPrefix>flag</mat-icon>
+                <mat-select formControlName="citizenship">
+                  <mat-option *ngFor="let citizen of citizenships" [value]="citizen">
+                    {{ citizen }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Address -->
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Street/Barangay</mat-label>
+                <mat-icon matPrefix>home</mat-icon>
+                <input
+                  matInput
+                  formControlName="address"
+                  placeholder="123 Rizal St, Barangay San Jose"
+                />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Province</mat-label>
+                <mat-icon matPrefix>map</mat-icon>
+                <mat-select formControlName="province">
+                  <mat-option *ngFor="let province of provinces" [value]="province">
+                    {{ province }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+
+          <!-- SECTION 2: STUDENT VERIFICATION -->
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>school</mat-icon>
+                Student Verification
+              </mat-panel-title>
+              <mat-panel-description> School details </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>School/University</mat-label>
+                <mat-icon matPrefix>account_balance</mat-icon>
+                <input
+                  matInput
+                  formControlName="schoolName"
+                  placeholder="e.g., University of Santo Tomas"
+                />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Student ID Number</mat-label>
+                <mat-icon matPrefix>confirmation_number</mat-icon>
+                <input matInput formControlName="studentId" placeholder="2024-12345" />
+                <mat-error *ngIf="formdata.get('studentId')?.hasError('required')">
+                  Student ID required
+                </mat-error>
+                <mat-error *ngIf="formdata.get('studentId')?.hasError('invalidStudentId')">
+                  Format: 2024-12345 or 9 digits
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <mat-hint>Present your valid school ID when claiming your permit</mat-hint>
+          </mat-expansion-panel>
+
+          <!-- SECTION 3: LTO REQUIREMENTS -->
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>traffic</mat-icon>
+                LTO Requirements
+              </mat-panel-title>
+              <mat-panel-description> License and medical info </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Restriction Code</mat-label>
+                <mat-icon matPrefix>no_crash</mat-icon>
+                <mat-select formControlName="restrictionCode">
+                  <mat-option *ngFor="let code of restrictionCodes" [value]="code">
+                    {{ code }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Blood Type</mat-label>
+                <mat-icon matPrefix>bloodtype</mat-icon>
+                <mat-select formControlName="bloodType">
+                  <mat-option *ngFor="let type of bloodTypes" [value]="type">
+                    {{ type }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- TIN (Optional) -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>TIN Number (Optional)</mat-label>
+              <mat-icon matPrefix>badge</mat-icon>
+              <input matInput formControlName="tinNumber" placeholder="123-456-789-000" />
+              <mat-error *ngIf="formdata.get('tinNumber')?.hasError('invalidTin')">
+                Invalid TIN format
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Medical Certificate -->
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Medical Clinic/Hospital</mat-label>
+                <mat-icon matPrefix>local_hospital</mat-icon>
+                <input
+                  matInput
+                  formControlName="medicalClinic"
+                  placeholder="e.g., Philippine General Hospital"
+                />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Medical Certificate Date</mat-label>
+                <mat-icon matPrefix>event</mat-icon>
+                <input matInput [matDatepicker]="medPicker" formControlName="medicalCertDate" />
+                <mat-datepicker-toggle matSuffix [for]="medPicker"></mat-datepicker-toggle>
+                <mat-datepicker #medPicker></mat-datepicker>
+                <mat-error *ngIf="formdata.get('medicalCertDate')?.hasError('required')">
+                  Date required
+                </mat-error>
+                <mat-error *ngIf="formdata.get('medicalCertDate')?.hasError('expiredMedical')">
+                  Medical certificate expired (must be within 6 months)
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-expansion-panel>
+
+          <!-- SECTION 4: EMERGENCY CONTACT -->
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>emergency</mat-icon>
+                Emergency Contact
+              </mat-panel-title>
+              <mat-panel-description> In case of emergency </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Full Name</mat-label>
+                <mat-icon matPrefix>person</mat-icon>
+                <input matInput formControlName="emergencyName" placeholder="Maria Dela Cruz" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Contact Number</mat-label>
+                <mat-icon matPrefix>phone</mat-icon>
+                <input matInput formControlName="emergencyContact" placeholder="09123456789" />
+                <mat-error *ngIf="formdata.get('emergencyContact')?.hasError('required')">
+                  Contact required
+                </mat-error>
+                <mat-error *ngIf="formdata.get('emergencyContact')?.hasError('invalidMobile')">
+                  Valid PH mobile number (e.g., 09123456789)
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Relationship</mat-label>
+              <mat-icon matPrefix>family_restroom</mat-icon>
+              <mat-select formControlName="emergencyRelation">
+                <mat-option *ngFor="let relation of emergencyRelations" [value]="relation">
+                  {{ relation }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-expansion-panel>
+
+          <!-- SECTION 5: PAYMENT -->
+          <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon>payment</mat-icon>
+                Payment Details
+              </mat-panel-title>
+              <mat-panel-description> Fee: ₱317.63 </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Payment Method</mat-label>
+                <mat-icon matPrefix>account_balance_wallet</mat-icon>
+                <mat-select formControlName="paymentMethod">
+                  <mat-option *ngFor="let method of paymentMethods" [value]="method">
+                    {{ method }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>OR Number</mat-label>
+                <mat-icon matPrefix>receipt</mat-icon>
+                <input matInput formControlName="orNumber" placeholder="12345678" />
+              </mat-form-field>
+            </div>
+
+            <div class="total-amount"><strong>Total Amount:</strong> ₱317.63</div>
+          </mat-expansion-panel>
+
+          <!-- TERMS AND CONDITIONS -->
+          <div class="terms-section">
+            <mat-checkbox formControlName="agreeTerms" color="primary">
+              I certify that all information provided is true and correct
+            </mat-checkbox>
+            <div class="terms-text">
+              <small
+                >By checking this box, you agree to the LTO Terms and Conditions and confirm that
+                you are a bona fide student.</small
+              >
+            </div>
+            <mat-error
+              *ngIf="
+                formdata.get('agreeTerms')?.hasError('required') &&
+                formdata.get('agreeTerms')?.touched
+              "
+            >
+              You must agree to continue
+            </mat-error>
+          </div>
+
+          <!-- BUTTONS -->
+          <div class="button-group">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="formdata.invalid && submitted"
+              class="submit-btn"
+            >
+              <mat-icon>check_circle</mat-icon>
+              Submit Application
+            </button>
+            <button
+              mat-stroked-button
+              color="warn"
+              type="button"
+              (click)="resetForm()"
+              class="reset-btn"
+            >
+              <mat-icon>refresh</mat-icon>
+              Clear Form
+            </button>
+          </div>
+        </mat-accordion>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- SUBMITTED DETAILS -->
+  <mat-card *ngIf="submitted && formdata.valid" class="submitted-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar class="success-icon">check_circle</mat-icon>
+      <mat-card-title>Application Submitted Successfully!</mat-card-title>
+      <mat-card-subtitle>
+        Reference Number: <strong>{{ referenceNumber }}</strong>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="submitted-details">
+        <div class="detail-group">
+          <h4>Personal Information</h4>
+          <div class="detail-item">
+            <mat-icon>person</mat-icon> <span><strong>Name:</strong> {{ fullName }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>email</mat-icon> <span><strong>Email:</strong> {{ email }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>wc</mat-icon> <span><strong>Gender:</strong> {{ gender }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>cake</mat-icon>
+            <span><strong>Birth Date:</strong> {{ birthDate | date: 'longDate' }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>place</mat-icon> <span><strong>Birth Place:</strong> {{ birthPlace }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>flag</mat-icon> <span><strong>Citizenship:</strong> {{ citizenship }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>home</mat-icon> <span><strong>Address:</strong> {{ address }}</span>
+          </div>
+        </div>
+
+        <div class="detail-group">
+          <h4>Student Details</h4>
+          <div class="detail-item">
+            <mat-icon>school</mat-icon> <span><strong>School:</strong> {{ schoolName }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>confirmation_number</mat-icon>
+            <span><strong>Student ID:</strong> {{ studentId }}</span>
+          </div>
+        </div>
+
+        <div class="detail-group">
+          <h4>LTO Information</h4>
+          <div class="detail-item">
+            <mat-icon>no_crash</mat-icon>
+            <span><strong>Restriction:</strong> {{ restrictionCode }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>bloodtype</mat-icon> <span><strong>Blood Type:</strong> {{ bloodType }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>local_hospital</mat-icon>
+            <span><strong>Medical Clinic:</strong> {{ medicalClinic }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>event</mat-icon>
+            <span><strong>Medical Date:</strong> {{ medicalCertDate | date: 'longDate' }}</span>
+          </div>
+        </div>
+
+        <div class="detail-group">
+          <h4>Emergency Contact</h4>
+          <div class="detail-item">
+            <mat-icon>person</mat-icon> <span><strong>Name:</strong> {{ emergencyName }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>phone</mat-icon> <span><strong>Contact:</strong> {{ emergencyContact }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>family_restroom</mat-icon>
+            <span><strong>Relation:</strong> {{ emergencyRelation }}</span>
+          </div>
+        </div>
+
+        <div class="detail-group">
+          <h4>Payment</h4>
+          <div class="detail-item">
+            <mat-icon>payment</mat-icon> <span><strong>Method:</strong> {{ paymentMethod }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>receipt</mat-icon> <span><strong>OR Number:</strong> {{ orNumber }}</span>
+          </div>
+          <div class="detail-item">
+            <mat-icon>attach_money</mat-icon> <span><strong>Amount:</strong> ₱317.63</span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
